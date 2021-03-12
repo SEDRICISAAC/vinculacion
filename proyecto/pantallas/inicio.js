@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function Inicio() {
   return (
     <View >
-      <Text>Inicio</Text>
+      <Text>Inicios</Text>
       
     </View>
   );
