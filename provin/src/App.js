@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
+import Game1 from './pages/dragDrop/game1';
 import Draw from './pages/draw/Draw';
 import Draw2 from './pages/draw/Draw2';
 import Draw3 from './pages/draw/Draw3';
@@ -22,6 +23,7 @@ function App() {
       <Route path="/draw3" component={Draw3} />
       <Route path="/draw4" component={Draw4} />
       <Route path="/draw5" component={Draw5} />
+      <Route path="/game1" component={Game1} />
      </Router>
     </div>
    

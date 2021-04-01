@@ -1,0 +1,33 @@
+.perro {
+
+    margin: 50px;    
+    top: 20px;
+    position: relative;
+    
+}
+
+.box {
+    flex: 1;
+    margin: 50px; 
+    padding: 20px;
+   top: 5%;
+    position: relative;
+   text-align: center;
+  justify-content: center;
+  
+}
+
+.opciones {
+    text-align: center;
+}
+
+
+
+.cards {
+    flex: auto;
+    z-index: 2;
+    margin: 8px;
+    top: 20px;
+    position: relative;
+}
+
