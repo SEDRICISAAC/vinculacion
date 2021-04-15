@@ -12,7 +12,7 @@ function Login() {
         style={{          
             textAlign: 'center',
             padding: 20,  marginTop: 40 }}
-         className="card" item xs={12} sm={4}>
+         className="card" xs={12} sm={4}>
         <Card  width="300" justifyContent="center" className="content">
           <h1>Bienvenidos</h1> 
           <br></br>  
@@ -48,7 +48,7 @@ function Login() {
          autoComplete="current-password"
        />
      </Grid>
-     <Grid item xs={4}>
+     <Grid  xs={4}>
       
      </Grid>
    </Grid>
@@ -65,7 +65,7 @@ function Login() {
    </Grid>
    
    <Grid container justify="center">
-     <Grid item>
+     <Grid >
        <Link href="/singIn" variant="body2">
          Aun no tienes cuenta??
        </Link>

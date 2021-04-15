@@ -104,8 +104,8 @@ function Draw() {
       </Grid>
             <Card className={classes.ancho}  style={{  border: '2px solid #14181C', marginTop: 50 }}>
                 <CanvasDraw
-                ref={lienzo}
-                lazyRadius={1}
+                    ref={lienzo}
+                    lazyRadius={1}
                     brushColor={canvas}
                     brushRadius={brush}
                     canvasHeight={450}

@@ -1,24 +1,18 @@
 .perro {
 
-    margin: 50px;    
-    top: 20px;
+    margin: 40px;
+    top: 60px;
     position: relative;
+  
     
 }
 
-.box {
-    flex: 1;
-    margin: 50px; 
-    padding: 20px;
-   top: 5%;
-    position: relative;
-   text-align: center;
-  justify-content: center;
-  
-}
 
 .opciones {
     text-align: center;
+    position: relative;
+    top: 20px
+  
 }
 
 
