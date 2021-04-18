@@ -1,7 +1,8 @@
-import React, {  useEffect} from 'react';
+import React, {  useEffect, useRef} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CardMedia from '@material-ui/core/CardMedia';
 import Card from '@material-ui/core/Card';
+import Notification from "../dialogNotifications/notification";
 
 import {   CardActionArea, Fade, Grid } from "@material-ui/core";
 
@@ -14,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: "60%",
       maxHeight: "100%",
       left: "20%",
-      position: "relative"
+      position: "relative",
+      borderRadius: 50
     },
    
     media: {
@@ -23,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
       paddingTop: "50.25%"
       
     },
-  
+
+   
     
     
    
@@ -36,20 +39,21 @@ function Game1() {
     const [checked, setChecked] = React.useState(false);
     const [dato1, setDato1] = React.useState({});
     const [contador, setContador] = React.useState(0);
+    const childRef = useRef();
   //  const [verificar, setVerificar] = React.useState([]);
     
     let img = [
 
       {id: 1, name: "Perro", photo: "../../../images/gameDnD/perro.jpg" },
-      {id: 2, name: "Gato", photo: "../../../images/gameDnD/abc1.jpg" },
-      {id: 3, name: "Conejo", photo: "../../../images/gameDnD/logo.jpg" },
-      {id: 4, name: "Gallina", photo: "../../../images/gameDnD/abc3.jpg" },
-      {id: 5, name: "Caballo", photo: "../../../images/gameDnD/abc4.jpg" },
-      {id: 6, name: "Perro", photo: "../../../images/gameDnD/circulo.jpg" },
-      {id: 7, name: "Gato", photo: "../../../images/gameDnD/curvas.jpg" },
-      {id: 8, name: "Conejo", photo: "../../../images/gameDnD/espiral.jpg" },
-      {id: 9, name: "Gallina", photo: "../../../images/gameDnD/logo2.jpg" },
-      {id: 10, name: "Caballo", photo: "../../../images/gameDnD/curvas2.jpg" }
+      {id: 2, name: "Gato", photo: "../../../images/gameDnD/gati1.jpg" },
+      {id: 3, name: "Conejo", photo: "../../../images/gameDnD/cone1.jpg" },
+      {id: 4, name: "Gallina", photo: "../../../images/gameDnD/gal1.jpg" },
+      {id: 5, name: "Caballo", photo: "../../../images/gameDnD/cab1.jpg" },
+      {id: 6, name: "Perro", photo: "../../../images/gameDnD/perr1.jpg" },
+      {id: 7, name: "Gato", photo: "../../../images/gameDnD/gati2.jpg" },
+      {id: 8, name: "Conejo", photo: "../../../images/gameDnD/cone2.jpg" },
+      {id: 9, name: "Gallina", photo: "../../../images/gameDnD/gal2.jpg" },
+      {id: 10, name: "Caballo", photo: "../../../images/gameDnD/cab2.jpg" }
     ];
 
     function generateRandomInt(){
@@ -150,11 +154,13 @@ function Game1() {
    
 
   return (
-    <div style={{ backgroundColor: "red", height: 659 }}>
+    <div style={{ backgroundColor: "#B7FAD4", height: 659 }}>
     <Grid container >
-
-            <Grid xs={12} sm={12}>
+        
+            <Grid xs={12} sm={12}  >
+                
                 <Grid className="perro" >
+                <h2>Reconoce el animalito</h2>
                     <Card className={classes.root}>
                         <CardMedia
                             className={classes.media}
@@ -175,10 +181,10 @@ function Game1() {
         <Grid xs={12} sm={4}>
           
             <Grid className="cards">
-            <CardActionArea  onClick={() => handleChange(item.name)} >
-            <Card className={classes.root1}>
-                  <Card className="name2" >
-                      <h2>{item.name}</h2>
+            <CardActionArea  style={{borderRadius: 50,}} onClick={() => handleChange(item.name)} >
+            <Card  style={{borderRadius: 50,}}>
+                  <Card  style={{borderRadius: 50, background: 'linear-gradient(to right bottom,  #825191, #ff93c2)' }} >
+                      <h2 style={{ color: "#fff" }}>{item.name}</h2>
                       
                   </Card>
             </Card>
@@ -190,6 +196,7 @@ function Game1() {
     
   </Grid>    
     </Grid>
+
     <Grid  sm={2}>
     </Grid>
 </Grid>

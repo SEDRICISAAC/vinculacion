@@ -1,7 +1,34 @@
 import React, {  } from 'react';
 import '../css/login.css';
+import { useHistory } from 'react-router';
 import { Grid, form, TextField, Link, Button,  Card,    } from "@material-ui/core";
 function Login() {
+
+  const [correo, setCorreo] = React.useState("");
+  const [contrasena, setContrasena] = React.useState("");
+  let history = useHistory();
+
+
+ /*async function login () {
+    if ( correo === "" || contrasena === ""){
+      alert("Registrate por favor")
+    }else {
+      let data = {correo, contrasena};
+      console.warn(data);
+      let result = await fetch("http://localhost:4000/login", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type" : 'application/json',
+          "Accept" : 'application/json'
+        }
+      })
+      result = await result.json()
+      console.warn("result", result)
+     
+    }
+    
+  }*/
 
   return (
   <div style={{ backgroundColor: '#5DADEF', height: 657 }}>
@@ -24,14 +51,14 @@ function Login() {
      <Grid style={{ margin: 20 }}   xs={12} >
      
        <TextField
-         name="Nombre"
+         value={correo}
          variant="outlined"
          required
          fullWidth
          id="name"
-         label="Nombre Completo"
+         label="Email"
          autoFocus
-        
+         onChange={(e)=>setCorreo(e.target.value)}
        />
      </Grid>
     
@@ -41,10 +68,10 @@ function Login() {
          variant="outlined"
          required
          fullWidth
-         name="contraseña"
+         value={contrasena}
          label="Contraseña"
          type="password"
-         id="password"
+         onChange={(e)=>setContrasena(e.target.value)}
          autoComplete="current-password"
        />
      </Grid>
@@ -54,7 +81,7 @@ function Login() {
    </Grid>
    <Grid style={{ margin: 20,  }}>
       <Button
-      type="submit"
+     // onClick={login}
       fullWidth
       variant="contained"
       color="primary"
@@ -66,7 +93,7 @@ function Login() {
    
    <Grid container justify="center">
      <Grid >
-       <Link href="/singIn" variant="body2">
+       <Link href="/signup" variant="body2">
          Aun no tienes cuenta??
        </Link>
      </Grid>

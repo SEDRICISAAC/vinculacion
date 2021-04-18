@@ -1,8 +1,9 @@
 .perro {
 
     margin: 40px;
-    top: 60px;
+    top: 10px;
     position: relative;
+    text-align: center;
   
     
 }
@@ -11,7 +12,7 @@
 .opciones {
     text-align: center;
     position: relative;
-    top: 20px
+    top: 2px
   
 }
 
@@ -20,8 +21,12 @@
 .cards {
     flex: auto;
     z-index: 2;
-    margin: 8px;
-    top: 20px;
+    margin: 5px;
+    top: 10px;
     position: relative;
+  
 }
 
+.color{
+    border-radius: 50px;
+}

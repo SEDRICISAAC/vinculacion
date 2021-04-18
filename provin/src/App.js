@@ -16,7 +16,7 @@ function App() {
     <div>
     <Router>
       <Route path="/" exact component={Login} />
-      <Route path="/singIn" component={Registro} />
+      <Route path="/signup" component={Registro} />
       <Route path="/levels" component={Levels} />
       <Route path='/draw' component={Draw} />      
       <Route path="/draw2" component={Draw2} />

@@ -97,6 +97,30 @@ function Levels() {
               >Jugar</Button>
               </CardContent>              
         </Card>
+        <Card className={classes.root}>
+      
+              <CardMedia
+                className={classes.media}
+                image="../../images/logo3.jpg"
+          
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Identifica el animal
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                Deberas reconocer que animalito es !!
+                </Typography>
+                <br />  
+                <Button
+              type="submit"
+              href="game1"
+              variant="contained"
+              color="primary"
+              style={{ borderRadius: 20 }}
+              >Jugar</Button>
+              </CardContent>              
+        </Card>
             </Carousel>
         </Grid>
         </Grid>
