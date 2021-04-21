@@ -1,34 +1,30 @@
-import React, {  } from 'react';
+import React, { useContext } from 'react';
 import '../css/login.css';
-import { useHistory } from 'react-router';
-import { Grid, form, TextField, Link, Button,  Card,    } from "@material-ui/core";
+
+import { Grid, form, TextField,  Button,  Card,    } from "@material-ui/core";
+import { Route, BrowserRouter as Router, Link, Redirect, useLocation, useHistory } from 'react-router-dom';
+
+
 function Login() {
+ 
 
   const [correo, setCorreo] = React.useState("");
   const [contrasena, setContrasena] = React.useState("");
   let history = useHistory();
+ 
 
 
- /*async function login () {
+ async function login () {
     if ( correo === "" || contrasena === ""){
       alert("Registrate por favor")
     }else {
       let data = {correo, contrasena};
-      console.warn(data);
-      let result = await fetch("http://localhost:4000/login", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type" : 'application/json',
-          "Accept" : 'application/json'
-        }
-      })
-      result = await result.json()
-      console.warn("result", result)
-     
+      
+      
+      history.push("/levels")
     }
     
-  }*/
+  }
 
   return (
   <div style={{ backgroundColor: '#5DADEF', height: 657 }}>
@@ -81,7 +77,8 @@ function Login() {
    </Grid>
    <Grid style={{ margin: 20,  }}>
       <Button
-     // onClick={login}
+      onClick={login}
+       
       fullWidth
       variant="contained"
       color="primary"

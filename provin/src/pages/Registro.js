@@ -1,7 +1,7 @@
 import React, {  } from 'react';
 import '../css/singin.css';
 import { Grid, TextField,  Button,  Card } from "@material-ui/core";
-import { Search }  from '@trejgun/material-ui-icons-google'; 
+import { Gmail, Search }  from '@trejgun/material-ui-icons-google'; 
 import { useHistory } from 'react-router';
 
 function Registro() {
@@ -24,7 +24,7 @@ function Registro() {
           "Content-Type" : 'application/json',
           "Accept" : 'application/json'
         }
-      })
+      }) 
       result = await result.json()
       console.warn("result", result)
       history.push("/")
@@ -102,7 +102,7 @@ function Registro() {
    </Grid>
    <Grid style={{ margin: 20,  }}>
       <Button
-      
+      href="/"
       fullWidth
       variant="contained"
       color="primary"

@@ -10,6 +10,9 @@ import Typography from '@material-ui/core/Typography';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
+import { useHistory, withRouter } from "react-router-dom";
+
+
 
 const useStyles = makeStyles({
   root: {
@@ -30,10 +33,24 @@ const useStyles = makeStyles({
   },
   });
 
-function Levels() {
+function Levels({ logout, ...rest }) {
     const classes = useStyles();
-
+    let history = useHistory();
    
+  const draw2  = () => {
+    history.push("/draw2")
+  }
+  const draw  = () => {
+    history.push("/draw")
+  }
+
+  const game1  = () => {
+    history.push("/game1")
+  }
+
+    
+  
+
   return (
     <Grid container >
         <Grid sm={2}>
@@ -68,7 +85,7 @@ function Levels() {
                   variant="contained"
                   color="primary"
                   style={{ borderRadius: 20 }}
-                  href="/draw2"
+                  onClick={draw2}
                   >Jugar</Button>
                 </CardContent>
             
@@ -89,8 +106,7 @@ function Levels() {
                 </Typography>
                 <br />  
                 <Button
-              type="submit"
-              href="draw"
+              onClick={draw}
               variant="contained"
               color="primary"
               style={{ borderRadius: 20 }}
@@ -113,8 +129,8 @@ function Levels() {
                 </Typography>
                 <br />  
                 <Button
-              type="submit"
-              href="game1"
+              
+              onClick={game1}
               variant="contained"
               color="primary"
               style={{ borderRadius: 20 }}
@@ -131,5 +147,7 @@ function Levels() {
 
   );
 }
+
+//export default  withRouter(Levels);
 
 export default Levels;

@@ -2,9 +2,11 @@ import React, {  useEffect, useRef} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CardMedia from '@material-ui/core/CardMedia';
 import Card from '@material-ui/core/Card';
-import Notification from "../dialogNotifications/notification";
+import TransitionsSnackbar from "../dialogNotifications/notification";
+import { Alert, AlertTitle } from '@material-ui/lab';
+import Button from '@material-ui/core/Button';
 
-import {   CardActionArea, Fade, Grid } from "@material-ui/core";
+import {   CardActionArea,  Grid } from "@material-ui/core";
 
 
 import '../../css/game1.css'
@@ -26,6 +28,8 @@ const useStyles = makeStyles((theme) => ({
       
     },
 
+    
+
    
     
     
@@ -36,11 +40,11 @@ const useStyles = makeStyles((theme) => ({
 
 function Game1() {
     const classes = useStyles();
-    const [checked, setChecked] = React.useState(false);
+ 
     const [dato1, setDato1] = React.useState({});
     const [contador, setContador] = React.useState(0);
-    const childRef = useRef();
-  //  const [verificar, setVerificar] = React.useState([]);
+  
+   const [alerta, setAlerta] = React.useState("");
     
     let img = [
 
@@ -110,7 +114,7 @@ function Game1() {
   // const verificar = data2.filter(item => (item.name === dato1.name))
    
 
-    const handleChange = (dato) => {
+    const handleChange = async (dato) => {
       //setChecked((prev) => !prev);
     // let imagenes = Object.values(img).find(item => item.name === dato)
       //console.log(imagenes)
@@ -126,7 +130,7 @@ function Game1() {
       })*/
       if(dato === dato1.name)
       {
-        alert("Coincide")
+        setAlerta("Correcto");
         prueba = img[numeros];
         setDato1(prueba)
         btnR = botones()
@@ -139,13 +143,35 @@ function Game1() {
        // console.log(verificar)
         if(contador == 5) 
         {
-          alert("Fin del Juego")
+          
+          setAlerta("Fin");
           setContador(0);
+          
+          let token = localStorage.getItem("token")
+          let user = localStorage.getItem("user_id")
+          let data = {
+            _person: user,
+            _nivel: 2,
+            Ptotal: 5
+          }
+          let result = await fetch("http://localhost:4000/score", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type" : 'application/json',
+              "Accept" : 'application/json'
+              //"authorization" : token
+            }
+          })
+       
+          result = await result.json()
+          console.log(result)
+          
        //   data2=[];
         //  setVerificar(data2)
         }
       }else {
-        alert("no coincide")
+        setAlerta("Incorrecto");
       }
      
 
@@ -154,54 +180,83 @@ function Game1() {
    
 
   return (
-    <div style={{ backgroundColor: "#B7FAD4", height: 659 }}>
-    <Grid container >
-        
-            <Grid xs={12} sm={12}  >
-                
-                <Grid className="perro" >
-                <h2>Reconoce el animalito</h2>
-                    <Card className={classes.root}>
-                        <CardMedia
-                            className={classes.media}
-                            image={dato1.photo}
-                        />
-                    </Card>
-                </Grid>        
-            </Grid>
-           
-    </Grid>
-    <Grid className="opciones">
-    <Grid  container>
-    <Grid   sm={2}>
-    </Grid>
-    <Grid  xs={12} sm={8}>
-    <Grid container>
-    {Object.values(btnR).map(item => (
-        <Grid xs={12} sm={4}>
+    <div style={{ backgroundColor: "#B7FAD4", height: 759 }}>
+
+      <div>
+      <Grid container >
           
-            <Grid className="cards">
-            <CardActionArea  style={{borderRadius: 50,}} onClick={() => handleChange(item.name)} >
-            <Card  style={{borderRadius: 50,}}>
-                  <Card  style={{borderRadius: 50, background: 'linear-gradient(to right bottom,  #825191, #ff93c2)' }} >
-                      <h2 style={{ color: "#fff" }}>{item.name}</h2>
-                      
-                  </Card>
-            </Card>
-            </CardActionArea>
-        </Grid>
-
-        </Grid>
-        ))}
-    
-  </Grid>    
-    </Grid>
-
-    <Grid  sm={2}>
-    </Grid>
-</Grid>
-    </Grid>
+              <Grid xs={12} sm={12}  >
+                  
+                  <Grid className="perro" >
+                  
+                  <h2>Reconoce el animalito</h2>
+                 
+                      <Card className={classes.root}>
+                          <CardMedia
+                              className={classes.media}
+                              image={dato1.photo}
+                          />
+                      </Card>
+                      <br />
+                      { alerta === "Correcto" ? (
+                        <div className={classes.alerta} >
+                        <Alert  severity="success">
+                        <AlertTitle>Felicitaciones</AlertTitle>
+                        Respuesta Correcta — <strong>Muy Bien</strong>
+                      </Alert>
+                        </div>
+                      ): alerta === "Incorrecto" ? (
+                        <div className={classes.alerta} >
+                        <Alert severity="error">
+                        <AlertTitle>Vuelve Intentar</AlertTitle>
+                        Respuesta Incorrecta — <strong>Muy mal</strong>
+                      </Alert>
+                        </div>
+                      ): alerta === "Fin" ? (
+                        <div className={classes.alerta} >
+                        <Alert severity="warning">
+                        <AlertTitle>Fin del Juego</AlertTitle>
+                       Gracias por Jugar — <strong>Adios</strong>
+                      </Alert>
+                        </div>
+                      ): null
+                       }
+                  </Grid>        
+              </Grid>
+             
+      </Grid>
+      <Grid className="opciones">
+      <Grid  container>
+      <Grid   sm={2}>
+      </Grid>
+      <Grid  xs={12} sm={8}>
+      <Grid container>
+      {Object.values(btnR).map(item => (
+          <Grid xs={12} sm={4}>
+            
+              <Grid className="cards">
+              <CardActionArea  style={{borderRadius: 50,}} onClick={() => handleChange(item.name)} >
+              <Card  style={{borderRadius: 50,}}>
+                    <Card  style={{borderRadius: 50, background: 'linear-gradient(to right bottom,  #825191, #ff93c2)' }} >
+                        <h2 style={{ color: "#fff" }}>{item.name}</h2>
+                        
+                    </Card>
+              </Card>
+              </CardActionArea>
+          </Grid>
   
+          </Grid>
+          ))}
+      
+    </Grid>    
+      </Grid>
+  
+      <Grid  sm={2}>
+      </Grid>
+  </Grid>
+      </Grid>
+      </div>
+
     </div> 
 
   );

@@ -1,10 +1,10 @@
 .perro {
 
     margin: 40px;
-    top: 10px;
+    top: 5px;
     position: relative;
     text-align: center;
-  
+ 
     
 }
 
@@ -12,7 +12,7 @@
 .opciones {
     text-align: center;
     position: relative;
-    top: 2px
+
   
 }
 
@@ -22,7 +22,7 @@
     flex: auto;
     z-index: 2;
     margin: 5px;
-    top: 10px;
+    
     position: relative;
   
 }
