@@ -3,6 +3,8 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const cors = require('cors');
+
+//inicializamos nuestros archivos
 const app = express(); 
 
 
@@ -16,7 +18,7 @@ mongoose.connect('mongodb://localhost:27017/user',
     .catch(err => console.log(err));
 
 
-//importando rutas
+//importando rutas 
 const indexRoutes = require('./routes/index');
 
 //settings
@@ -26,8 +28,10 @@ app.set('view engine', 'ejs');
 
 //middlewares
 app.use(morgan('dev'));
+
         //entiende datos de un formulario solo texto
 app.use(express.urlencoded({extended: false}));
+
 // autorización CORS
 app.use(cors({
     origin: 'http://localhost:3000',
@@ -37,6 +41,7 @@ app.use(cors({
 app.use(express.json());
 //Estudio url body-parse
 app.use(express.urlencoded({ extended: false }))
+
 //routes
 app.use('/api', indexRoutes);
 
